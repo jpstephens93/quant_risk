@@ -1,6 +1,6 @@
 from scipy import stats
 from pandas import Series
-from numpy import ndarray
+from numpy import ndarray, std
 
 
 def market_beta(portfolio_returns: ndarray, benchmark_returns: ndarray) -> float:
@@ -31,3 +31,9 @@ def market_alpha(portfolio_returns: ndarray, benchmark_returns: ndarray) -> floa
     if isinstance(benchmark_returns, Series):
         benchmark_returns = benchmark_returns.values
     return stats.linregress(benchmark_returns, portfolio_returns)[1]
+
+
+def realised_volatility(returns: ndarray):
+    if isinstance(returns, Series):
+        returns = returns.values
+    return std(returns)

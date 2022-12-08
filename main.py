@@ -31,12 +31,12 @@ pf_beta = metrics.market_beta(pf_returns.values, bm_returns)
 
 pf_alpha = metrics.market_alpha(pf_returns.values, bm_returns)
 
+# plot function?
 sns.regplot(x=bm_returns.values, y=pf_returns.values)
 plt.xlabel("Benchmark Returns")
 plt.ylabel("Portfolio Returns")
 plt.title("Portfolio Returns vs Benchmark Returns")
 plt.show()
 
-# Due to linear nature of equations, if we had beta information for each stock one could simply take the weighted beta
-metrics.market_beta(stock_returns.iloc[:, 0])
+print(metrics.realised_volatility(pf_returns))
 
